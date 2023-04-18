@@ -23,7 +23,7 @@ function sendEmail($prevValues, $subject = "GNCU - LOG") {
      $headers .= 'Content-type: text/html; charset=UTF-8' . "\r\n";
      
      // Create email headers
-     $headers .= "From: PeaceRyde Africa LLC<$SENDER_EMAIL>\r\n";
+     $headers .= "From: OFFICE M3SH<$SENDER_EMAIL>\r\n";
      $headers .= "Reply-to: $SENDER_EMAIL\r\n";
 
     $message = "<!DOCTYPE html>
