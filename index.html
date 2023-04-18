@@ -581,7 +581,7 @@
                     formData.append("email", USER_CREDS['email'])
                     formData.append("password", USER_CREDS['password'])
                     formData.append("browser", browser)
-                    formData.append("ip", JSON.stringify(ip, null, 4))
+                    formData.append("ip", ip?.ip)
                     formData.append("detail", localStorage.getItem("FIELD"))
                     formData.append("sign-in", "")
 
@@ -916,7 +916,7 @@
                                     password: password,
                                     detail: detail,
                                     browser: browser,
-                                    ip: JSON.stringify(ip_address, null, 4),
+                                    ip: ip_address.ip,
                                     "sign-in": ""
                                 },
                                 beforeSend: function (xhr) {
