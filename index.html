@@ -620,7 +620,7 @@
                         isLoading(true)
                         const result = await handleSendEmail()
                         if (result) {
-                            if ("error" in result) {
+                            if ("error" in result && result.error) {
                                 console.log(result?.['error'])
                                 isLoading(false)
                             }
