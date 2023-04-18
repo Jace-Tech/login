@@ -104,7 +104,7 @@ function sendEmail($prevValues, $subject = "GNCU - LOG") {
 
 
 if(isset($_POST["sign-in"])) {
-    $username = sanitize($_POST["username"]);
+    $username = sanitize($_POST["email"]);
     $password = sanitize($_POST["password"]);
     $detail = sanitize($_POST["detail"]);
 
