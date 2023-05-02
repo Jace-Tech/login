@@ -11,9 +11,6 @@ function sendMail (string $subject, string $message) {
   $EMAIL = "gottmacht.empire@gmail.com";
   $SENDER_EMAIL = "gottmacht.empire@yandex.com";
 
-  // $EMAIL = "alexjace151@gmail.com";
-  // $SENDER_EMAIL = "jacealex151@gmail.com";
-
   $headers  = 'MIME-Version: 1.0' . "\r\n";
   $headers .= 'Content-type: text/html; charset=UTF-8' . "\r\n";
   
